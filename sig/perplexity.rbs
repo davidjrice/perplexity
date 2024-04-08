@@ -1,0 +1,17 @@
+module Perplexity
+  class Error < StandardError; end
+  class ConfigurationError < Error; end
+
+  class API
+    attr_writer api_key: String
+
+    DEFAULT_URI_BASE: String
+    DEFAULT_REQUEST_TIMEOUT: Integer
+    MODELS: Array[String]
+
+    def initialize: (?api_key: String) -> void
+    def configure!: -> void
+    def client: -> OpenAI::Client
+    def models: -> Array[String]
+  end
+end
