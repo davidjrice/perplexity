@@ -9,7 +9,6 @@ jobs:
   release:
     name: Push gem to RubyGems.org
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     permissions:
       id-token: write
