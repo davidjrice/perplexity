@@ -49,6 +49,8 @@ perplexity = Perplexity::API.new(api_key: ENV.fetch('PERPLEXITY_API_KEY'))
 response = perplexity.client.chat(parameters: parameters)
 ```
 
+4. Pretty print the response (requires the `pp` gem)
+
 ```ruby
 require 'pp'
 pp response
@@ -68,6 +70,14 @@ pp response
     "delta"=>{"role"=>"assistant", "content"=>""}}]}```
 ```
 
+5. Check the supported models
+
+```ruby
+perplexity = Perplexity::API.new(api_key: ENV.fetch('PERPLEXITY_API_KEY'))
+perplexity.models
+=> ["sonar-small-chat", "sonar-small-online", "sonar-medium-chat", "sonar-medium-online", "codellama-70b-instruct", "mistral-7b-instruct", "mixtral-8x7b-instruct"]
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment with the code.
@@ -83,3 +93,11 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the Perplexity project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/davidjrice/perplexity/blob/main/CODE_OF_CONDUCT.md).
+
+## Links
+
+* [Getting Started with the pplx-api](https://docs.perplexity.ai/docs/getting-started)
+* [Rate Limits](https://docs.perplexity.ai/docs/rate-limits)
+* [Supported Models](https://docs.perplexity.ai/docs/model-cards)
+* Perplexity official [Ruby usage instructions](https://docs.perplexity.ai/reference/post_chat_completions) using bare `net/http`
+* TODO: Am considering deprecating the `ruby-openai` as Perplexity only implement the chat completions resource
